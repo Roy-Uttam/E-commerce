@@ -46,9 +46,8 @@
             
             <div class="col-xs-8">
                 <div class="row">
-
-                    @foreach ($returnProduct as $product){
-                        <div class="col-xs-4">
+                    @foreach ($returnProduct as $product)
+                        <div class="col-xs-4" style="padding: 15px;">
                             <img src="{{asset($product['image'])}}" height="200" width="200" alt="">
                             <h4>{{$product['name']}}</h4>
                             <div class="rating">
@@ -59,9 +58,7 @@
                                 <i class="fa fa-star"></i>
                             </div>
                             <p>{{$product['price']}}</p>
-                        </div>
-                    }
-                        
+                        </div> 
                     @endforeach
 
                 </div>
