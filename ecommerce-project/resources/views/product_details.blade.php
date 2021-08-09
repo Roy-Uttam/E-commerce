@@ -35,21 +35,33 @@
     <div class="small-container single-product">
         <div class="row">
             <div class="col-2">
-                <img src="{{ asset('images/gallery-1.jpg')}}" width="100%" id="ProductImg">
+                <img src="{{ asset($images[0])}}" width="100%" id="ProductImg">
 
                 <div class="small-img-row">
-                    <div class="small-img-col">
-                        <img src="{{ asset('images/gallery-1.jpg')}}" width="100%" class="small-img">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="{{ asset('images/gallery-2.jpg')}}" width="100%" class="small-img">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="{{ asset('images/gallery-3.jpg')}}" width="100%" class="small-img">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="{{ asset('images/gallery-4.jpg')}}" width="100%" class="small-img">
-                    </div>
+                    @if (isset($images[0]))
+                      
+                        <div class="small-img-col">
+                            <img src="{{ asset($images[0])}}" width="100%" class="small-img">
+                        </div>
+                    @endif
+                    @if (isset($images[1]))
+                        <div class="small-img-col">
+                            <img src="{{ asset($images[1])}}" width="100%" class="small-img">
+                        </div>
+                    @endif
+
+                    @if (isset($images[2]))
+                        <div class="small-img-col">
+                            <img src="{{ asset($images[2])}}" width="100%" class="small-img">
+                        </div>
+                    @endif
+
+                    @if (isset($images[3]))
+                        <div class="small-img-col">
+                            <img src="{{ asset($images[3])}}" width="100%" class="small-img">
+                        </div>
+                    @endif
+
                 </div>
 
             </div>

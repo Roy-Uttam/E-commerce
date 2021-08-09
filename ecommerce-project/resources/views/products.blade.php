@@ -48,7 +48,7 @@
         <div class="row">
             @foreach ($products as $product)
                 <div class="col-xs-4">
-                    <img src="{{asset(explode('|', $product->image)[0])}}" height="200" width="200" alt="">
+                    <a href="{{url('/products/'.$product->id)}}"><img src="{{asset(explode('|', $product->image)[0])}}" height="200" width="200" alt=""></a>
                     <h4>{{$product->name}}</h4>
                     <div class="rating">
                         <i class="fa fa-star"></i>
