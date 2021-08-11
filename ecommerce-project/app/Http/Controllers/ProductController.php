@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -77,9 +78,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $images = explode('|' , $product->image);
-        return view('product_details' , compact('product' ,'images'));
-        
+        $images= explode('|' , $product->image);
+        $related_products = Product::where('category_id', $product->category_id)->where('id','!=' ,$product->id)->limit(3)->get();
+
+        return view('product_details' , compact('product' , 'images' ,'related_products'));
     }
 
     /**

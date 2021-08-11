@@ -96,54 +96,24 @@
     <!-- Products -->
     <div class="small-container">
         <div class="row">
-            <div class="col-4">
-                <img src="{{ asset('images/product-9.jpg')}}">
-                <h4>Red Printed T-Shirt</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
+            @foreach ($related_product as $rel_product)
+                
+           
+                <div class="col-4">
+                    <a href={{"/product/" . $product->id}}><img src="{{asset(explode('|',$rel_product->image)[0])}}"></a>
+                    <h4>{{$rel_product->name}}</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>{{$rel_product->price}}</p>
                 </div>
-                <p>$50.00</p>
-            </div>
-            <div class="col-4">
-                <img src="{{ asset('images/product-10.jpg')}}">
-                <h4>Red Printed T-Shirt</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>$50.00</p>
-            </div>
-            <div class="col-4">
-                <img src="{{ asset('images/product-11.jpg')}}">
-                <h4>Red Printed T-Shirt</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>$50.00</p>
-            </div>
-            <div class="col-4">
-                <img src="{{ asset('images/product-12.jpg')}}">
-                <h4>Red Printed T-Shirt</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>$50.00</p>
-            </div>
+           
+            @endforeach
+        
         </div>
     </div>
 
