@@ -29,11 +29,13 @@ Route::get('/account', function () {
     return view('account');
 });
 
-Route::get('/cart', function () {
-    return view('cart');
-});
+// Route::get('/cart', function () {
+//     return view('cart');
+// });
 
 Route::resource('/products', \App\Http\Controllers\ProductController::class);
 Route::post('/add-to-cart', '\App\Http\Controllers\ProductController@addToCart');
+Route::get('/cart', '\App\Http\Controllers\ProductController@viewCart');
+
 Route::resource('/users', \App\Http\Controllers\UserController::class);
 Route::get('/admin_products', '\App\Http\Controllers\ProductController@addProduct');

@@ -166,4 +166,15 @@ class ProductController extends Controller
         return redirect('/products')->with('success' , 'Product added to cart succesfully');
 
     }
+
+    public function viewCart(){
+
+        $carts = Cart::content();
+        $subTotal = Cart::subtotal();
+
+        return view('cart', compact('carts' , 'subTotal'));
+      
+    }
+
+    
 }
