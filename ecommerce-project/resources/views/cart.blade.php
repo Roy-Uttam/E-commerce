@@ -56,7 +56,7 @@
                                 <p>{{$cart->name}}</p>
                                 <small>Price: ${{$cart->price}}</small>
                                 <br>
-                                <a href="">Remove</a>
+                                <a href="{{url('/remove-item/' .$cart->rowId)}}">Remove</a>
                             </div>
                         </div>
                     </td>

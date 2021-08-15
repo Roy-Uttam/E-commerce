@@ -176,5 +176,10 @@ class ProductController extends Controller
       
     }
 
-    
+    public function removeItem($rowId){
+
+        Cart::remove($rowId);
+        return redirect('/cart')->with('success' , 'Product Removed from cart succesfully');
+
+    }
 }
