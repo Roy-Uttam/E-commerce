@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 
@@ -137,5 +138,32 @@ class ProductController extends Controller
         }
 
         return view('add_product', compact('returnProduct'));
+    }
+
+    public function addToCart(Request $request){
+        
+        $id = $request->has('pid') ? $request->get('pid'):'';
+        $name = $request->has('name') ? $request->get('name'):'';
+        $price = $request->has('price') ? $request->get('price'):'';
+        $quantity = $request->has('quantity') ? $request->get('quantity'):'';
+        $size = $request->has('size') ? $request->get('size'):'';
+
+        $images = Product::find($id)->image;
+        $image = explode('|' , $images)[0];
+        $cart = Cart::content()->where('id' , $id)->first();
+
+        if(isset($cart) && $cart!=null){
+
+            $quantity=( (int)$quantity + (int)$cart->qty);
+            $total = ((int)$quantity * (int)$price);
+            Cart::update($cart->rowId, ['qty'=>$quantity , 'options'=> ['size' => $size , 'image'=>$image , 'total'=>$total]]);
+        }else{
+
+            $total = ((int)$quantity * (int)$price);
+            Cart::add($id, $name, $quantity, $price, ['size' => $size , 'image'=>$image , 'total'=>$total]);
+        }
+
+        return redirect('/products')->with('success' , 'Product added to cart succesfully');
+
     }
 }

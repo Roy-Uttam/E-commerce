@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+    </head>
 
 <body>
     <div class="container">
@@ -68,18 +68,24 @@
             <div class="col-2">
                 <p>{{$product->category->category_name}}</p>
                 <h1>{{$product->name}}</h1>
-                <h4>{{$product->price}}</h4>
-                <select>
-                    <option>Select Size</option>
-                    <option>XXL</option>
-                    <option>XL</option>
-                    <option>L</option>
-                    <option>M</option>
-                    <option>S</option>
-                </select>
-                <input type="number" value="1">
-                <a href="" class="btn">Add To Cart</a>
+                <h4>Price:{{$product->price}}</h4>
 
+                <form method="POST" action="/add-to-cart">
+                    @csrf
+                    <select name="size">
+                        <option value="" >Select Size</option>
+                        <option value="XXL">XXL</option>
+                        <option value="XL">XL</option>
+                        <option value="L">L</option>
+                        <option value="M">M</option>
+                        <option value="S">S</option>
+                    </select>
+                    <input type="hidden" name="pid" value="{{$product->id}}">
+                    <input type="hidden" name="price" value="{{$product->price}}">
+                    <input type="hidden" name="name" value="{{$product->name}}">
+                    <label>Amount</label><input name="quantity" type="number" value="1">
+                    <button type="submit" class="btn">Add To Cart</button>
+                </form>
                 <h3>Product Details <i class="fa fa-indent"></i></h3>
                 <br>
                 <p>{{$product->details}}</p>
@@ -96,7 +102,7 @@
     <!-- Products -->
     <div class="small-container">
         <div class="row">
-            @foreach ($related_product as $rel_product)
+            @foreach ($related_products as $rel_product)
                 
            
                 <div class="col-4">
@@ -158,7 +164,6 @@
     </div>
 
     <!-- javascript -->
-
     <script>
         var MenuItems = document.getElementById("MenuItems");
         MenuItems.style.maxHeight = "0px";
