@@ -182,4 +182,13 @@ class ProductController extends Controller
         return redirect('/cart')->with('success' , 'Product Removed from cart succesfully');
 
     }
+
+    public function home(){
+
+        $featured_product = Product::orderby('price','desc')->limit(3)->get();
+        $latest_product = Product::orderby('created_at', 'desc')->limit(2)->get();
+
+        return view('/welcome', compact('featured_product' , 'latest_product'));
+
+    }
 }
