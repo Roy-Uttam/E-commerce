@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(3);
+        $products = Product::paginate(6);
         
         return view('products' , compact('products'));
 
@@ -185,8 +185,8 @@ class ProductController extends Controller
 
     public function home(){
 
-        $featured_product = Product::orderby('price','desc')->limit(3)->get();
-        $latest_product = Product::orderby('created_at', 'desc')->limit(2)->get();
+        $featured_product = Product::orderby('price','desc')->limit(8)->get();
+        $latest_product = Product::orderby('created_at', 'desc')->limit(3)->get();
 
         return view('/welcome', compact('featured_product' , 'latest_product'));
 

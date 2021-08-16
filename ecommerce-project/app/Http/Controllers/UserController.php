@@ -57,7 +57,7 @@ class UserController extends Controller
             'password'=>$request->has('pass')? $request->get('pass'):'',
 
         ]);
-        return redirect('/admin_products');
+        return redirect('/account')->with('success' , 'Registration succesfully');
     }
 
     /**

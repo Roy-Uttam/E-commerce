@@ -54,7 +54,7 @@
 
         <div class="row">
             @foreach ($products as $product)
-                <div class="col-xs-4">
+                <div class="col-4">
                     <a href="{{url('/products/'.$product->id)}}"><img src="{{asset(explode('|', $product->image)[0])}}" height="200" width="200" alt=""></a>
                     <h4>{{$product->name}}</h4>
                     <div class="rating">

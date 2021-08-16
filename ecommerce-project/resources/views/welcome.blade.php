@@ -51,13 +51,13 @@
     <div class="small-container">
         <div class="row">
             <div class="col-3">
-                <img src= "{{ asset('images/category-1.jpg') }}" >
+                <img src= "{{ asset('images/category-1.jpg') }}" height="250" width="400">
             </div>
             <div class="col-3">
-                <img src="{{ asset('images/category-2.jpg') }}">
+                <img src="{{ asset('images/category-2.jpg') }}" height="250" width="400">
             </div>
             <div class="col-3">
-                <img src="{{ asset('images/category-3.jpg') }}">
+                <img src="{{ asset('images/category-3.jpg') }}" height="250" width="400">
             </div>
         </div>
     </div>
@@ -116,9 +116,8 @@
             </div>
             <div class="col-2">
                 <p>Exclusively Available on RedStore</p>
-                <h1>Smart Band 4</h1>
-                <small>The Mi Smart Band 4 fearures a 39.9%larger (than Mi Band 3) AMOLED color full-touch display
-                    with adjustable brightness, so everything is clear as can be.<br></small>
+                <h1>Lamborgini 2021</h1>
+                
                 <a href="{{ url('/products') }}" class="btn">Buy Now &#8594;</a>
             </div>
         </div>
