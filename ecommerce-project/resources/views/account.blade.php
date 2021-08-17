@@ -27,7 +27,7 @@
                     <li><a href="{{ url('/account') }}">Account</a></li>
                 </ul>
             </nav>
-            <a href="{{ url('/cart')}} ><img src="{{ asset('images/cart.png')}}" width="30px" height="30px"></a>
+            <a href="{{ url('/cart')}}" ><img src="{{ asset('images/cart.png')}}" width="30px" height="30px"></a>
             <img src="images/menu.png')}}" class="menu-icon" onclick="menutoggle()">
         </div>
     </div>
@@ -46,6 +46,12 @@
                 </div>
                 <div class="col-2">
                     <div class="form-container">
+                        @if(session()->has('error'))
+                            <div class="alert alert-warning">
+                                {{ session()->get('error') }}
+                            </div>
+                        @endif
+                        
                         <div class="form-btn">
                             <span onclick="register()">Register</span>
                             <span onclick="login()">Login</span>
@@ -65,7 +71,7 @@
                             <input type="email" name="email" placeholder="Email">
                             <input type="text" name="mobile" placeholder="Mobile">
                             <input type="password" name="pass" placeholder="Password" required>
-                            <button type="submit" class="btn">Register</button>
+                            <button type="submit" name="reg" class="btn">Register</button>
                         </form>
                     </div>
                 </div>

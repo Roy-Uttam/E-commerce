@@ -2,16 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\CheckUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Psy\VersionUpdater\Checker;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkuser')->only('store');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function index(Request $request)
     {
        
@@ -22,7 +31,11 @@ class UserController extends Controller
 
         if(isset($userInfo) && $userInfo!=null)
         {
-            return redirect('/admin_products');
+
+            $product_controller = new ProductController();
+            return $product_controller->addProduct();
+            
+            // return redirect('/admin_products');
         }
         else
         {

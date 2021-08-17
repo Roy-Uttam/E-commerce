@@ -25,7 +25,7 @@ Route::get('/product_details', function () {
 
 Route::get('/account', function () {
     return view('account');
-});
+})->name('accounts');
 
 // Route::get('/cart', function () {
 //     return view('cart');
@@ -37,4 +37,4 @@ Route::get('/cart', '\App\Http\Controllers\ProductController@viewCart');
 Route::get('/remove-item/{rowId}', '\App\Http\Controllers\ProductController@removeItem');
 
 Route::resource('/users', \App\Http\Controllers\UserController::class);
-Route::get('/admin_products', '\App\Http\Controllers\ProductController@addProduct');
+Route::get('/admin_products', '\App\Http\Controllers\ProductController@addProduct')->middleware('auth');
