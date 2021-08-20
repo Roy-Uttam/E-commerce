@@ -191,4 +191,24 @@ class ProductController extends Controller
         return view('/welcome', compact('featured_product' , 'latest_product'));
 
     }
+
+    public function validateAmount(Request $request){
+
+       $id = $request->has('pid')? $request->get('pid'):'';
+       $product_amount= Product::find($id)->amount;
+
+       if($request->has('qty') && $request->get('qty') > $product_amount){
+
+        return json_encode([
+            'success'=>true,
+            'message'=>'Product quentity must be less than '. $product_amount
+        ]);
+       }else{
+        return json_encode([
+            'success'=>false
+        ]);
+       }
+
+    }
+    
 }
